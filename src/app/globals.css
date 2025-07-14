@@ -1,26 +1,64 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --foreground-heading: #352518;
+  --warm-sage: #8b9a6b;
+  --warm-sage-light: #a8b888;
+  --warm-sage-dark: #6d7a52;
+  --warm-coral: #d4896b;
+  --warm-coral-light: #e6a988;
+  --warm-coral-dark: #b8704d;
+  --warm-yellow: #f4d03f;
+  --warm-yellow-light: #f7dc6f;
+  --warm-yellow-dark: #d5b43a;
+  --warm-cream: #f5f1e8;
+  --warm-cream-light: #faf5e5;
+  --warm-cream-dark: #e8e1d4;
+  --warm-brown: #8b6f47;
+  --warm-brown-light: #a68660;
+  --warm-brown-dark: #6d5538;
+  --soft-peach: #f2ddd4;
+  --soft-peach-light: #f7e8e0;
+  --soft-peach-dark: #e6c8b8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-foreground-heading: var(--foreground-heading);
+  --color-warm-sage: var(--warm-sage);
+  --color-warm-sage-light: var(--warm-sage-light);
+  --color-warm-sage-dark: var(--warm-sage-dark);
+  --color-warm-coral: var(--warm-coral);
+  --color-warm-coral-light: var(--warm-coral-light);
+  --color-warm-coral-dark: var(--warm-coral-dark);
+  --color-warm-yellow: var(--warm-yellow);
+  --color-warm-yellow-light: var(--warm-yellow-light);
+  --color-warm-yellow-dark: var(--warm-yellow-dark);
+  --color-warm-cream: var(--warm-cream);
+  --color-warm-cream-light: var(--warm-cream-light);
+  --color-warm-cream-dark: var(--warm-cream-dark);
+  --color-warm-brown: var(--warm-brown);
+  --color-warm-brown-light: var(--warm-brown-light);
+  --color-warm-brown-dark: var(--warm-brown-dark);
+  --color-soft-peach: var(--soft-peach);
+  --color-soft-peach-light: var(--soft-peach-light);
+  --color-soft-peach-dark: var(--soft-peach-dark);
+  --font-heading: var(--font-bebas-neue);
+  --font-elegant: var(--font-playfair-display);
+  --font-body: var(--font-inter);
+  --font-script: var(--font-great-vibes);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }
