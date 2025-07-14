@@ -36,6 +36,33 @@ function TimelineItem({ time, title, color, description }: TimelineItemProps) {
 }
 
 export default function Schedule() {
+  const scheduleEvents = [
+    {
+      time: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_1_TIME || '',
+      title: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_1_TITLE || '',
+      color: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_1_COLOR || '',
+      description: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_1_DESC || '',
+    },
+    {
+      time: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_2_TIME || '',
+      title: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_2_TITLE || '',
+      color: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_2_COLOR || '',
+      description: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_2_DESC || '',
+    },
+    {
+      time: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_3_TIME || '',
+      title: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_3_TITLE || '',
+      color: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_3_COLOR || '',
+      description: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_3_DESC || '',
+    },
+    {
+      time: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_4_TIME || '',
+      title: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_4_TITLE || '',
+      color: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_4_COLOR || '',
+      description: process.env.NEXT_PUBLIC_SCHEDULE_EVENT_4_DESC || '',
+    },
+  ];
+
   return (
     <div className="relative max-w-sm mx-auto px-4">
       {/* Timeline Line */}
@@ -43,20 +70,15 @@ export default function Schedule() {
 
       {/* Timeline Items */}
       <div className="space-y-16 relative">
-        <TimelineItem
-          time="14:00"
-          title="受付"
-          color="bg-warm-yellow"
-          description="受付開始。ゲストの皆様をお迎えします。"
-        />
-        <TimelineItem time="14:30" title="挙式" color="bg-warm-sage" />
-        <TimelineItem
-          time="15:30"
-          title="写真撮影"
-          color="bg-soft-peach-dark"
-        />
-        <TimelineItem time="17:00" title="披露宴" color="bg-warm-coral" />
-        <TimelineItem time="19:30" title="お見送り" color="bg-warm-brown" />
+        {scheduleEvents.map((event, index) => (
+          <TimelineItem
+            key={index}
+            time={event.time}
+            title={event.title}
+            color={event.color}
+            description={event.description}
+          />
+        ))}
       </div>
     </div>
   );

@@ -25,8 +25,8 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "TAKASHI & RIN - Wedding",
-  description: "TAKASHI & RIN's wedding invitation - 2024年12月15日",
+  title: process.env.NEXT_PUBLIC_SITE_TITLE || "",
+  description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || "",
 };
 
 export default function RootLayout({
