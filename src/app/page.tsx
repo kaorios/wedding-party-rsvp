@@ -27,7 +27,7 @@ export default function Home() {
         <div className="absolute inset-0 flex flex-col justify-between items-center">
           <div className="relative max-w-[1200px] w-full">
             <Image
-              src="/bg-hero-up.jpg"
+              src="/bg-hero-up.png"
               alt="Wedding Background Top"
               width={1200}
               height={600}
@@ -37,7 +37,7 @@ export default function Home() {
           </div>
           <div className="relative max-w-[1200px] w-full">
             <Image
-              src="/bg-hero-bottom.jpg"
+              src="/bg-hero-bottom.png"
               alt="Wedding Background Bottom"
               width={1200}
               height={600}
@@ -46,7 +46,7 @@ export default function Home() {
           </div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="mb-8 bg-warm-cream-light bg-opacity-90 p-6 rounded-lg backdrop-blur-sm">
+          <div className="bg-warm-cream-light bg-opacity-90 p-6 rounded-lg backdrop-blur-sm">
             <h1 className="text-6xl md:text-8xl font-elegant font-extrabold text-foreground-heading mb-4 tracking-wider ">
               <span className="block md:inline">
                 {weddingDetails.coupleName1}
@@ -57,14 +57,13 @@ export default function Home() {
               </span>
             </h1>
             <div className="w-32 h-1 bg-warm-coral mx-auto mb-6 rounded-full"></div>
-            <p className="text-xl md:text-2xl text-warm-sage font-body">
+            <h2 className="text-xl md:text-2xl text-warm-sage font-body">
               {weddingDetails.dateEn} | {weddingDetails.locationEn}
+            </h2>
+            <p className="text-2xl md:text-3xl font-script text-warm-brown tracking-wide mt-8">
+              We are super excited to have you all with us on our big day
             </p>
           </div>
-
-          <h2 className="text-2xl md:text-3xl font-script text-warm-brown tracking-wide ">
-            We are super excited to have you all with us on our big day
-          </h2>
         </div>
       </section>
 

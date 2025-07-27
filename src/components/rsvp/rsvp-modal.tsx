@@ -93,7 +93,7 @@ function RSVPModal({ isOpen, onClose }: RSVPModalProps) {
             </div>
 
             {/* 基本情報 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div>
                 <label className="block text-warm-brown font-semibold mb-2">
                   お名前 <span className="text-warm-coral">*</span>

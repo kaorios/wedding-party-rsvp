@@ -13,15 +13,15 @@
   --warm-yellow: #f4d03f;
   --warm-yellow-light: #f7dc6f;
   --warm-yellow-dark: #d5b43a;
-  --warm-cream: #f5f1e8;
+  --warm-cream: #faf8f5;
   --warm-cream-light: #faf5e5;
   --warm-cream-dark: #e8e1d4;
   --warm-brown: #8b6f47;
   --warm-brown-light: #a68660;
   --warm-brown-dark: #6d5538;
-  --soft-peach: #f2ddd4;
-  --soft-peach-light: #f7e8e0;
-  --soft-peach-dark: #e6c8b8;
+  --soft-peach: #f7ede8;
+  --soft-peach-light: #fcf9f7;
+  --soft-peach-dark: #f5f0ed;
 }
 
 @theme inline {
