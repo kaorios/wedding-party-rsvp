@@ -1,36 +1,195 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wedding Website
+
+This is a wedding website built with [Next.js](https://nextjs.org), TypeScript, Tailwind CSS, and [Supabase](https://supabase.com) for the backend.
+
+## Tech Stack
+
+- **Frontend**: Next.js 15.3.4 with App Router
+- **Database**: Supabase (PostgreSQL)
+- **Styling**: Tailwind CSS v4
+- **Language**: TypeScript
+- **Development**: Turbopack
+
+## Prerequisites
+
+- Node.js 18+
+- npm/yarn/pnpm
+- Supabase account
+
+## Environment Setup
+
+1. Copy the environment file:
+
+```bash
+cp .env.local.example .env.local
+```
+
+2. Update the Supabase configuration in `.env.local`:
+
+```bash
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+```
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Set up Supabase locally (optional for development):
+
+```bash
+npm run supabase start
+```
+
+3. Run database migrations:
+
+```bash
+npm run supabase db reset
+```
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supabase Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Local Development
+
+The project includes a complete Supabase configuration for local development:
+
+- **API Server**: http://127.0.0.1:54321
+- **Database**: PostgreSQL on port 54322
+- **Studio**: http://127.0.0.1:54323
+- **Inbucket (Email Testing)**: http://127.0.0.1:54324
+
+### Database Schema
+
+The wedding website uses the following database tables:
+
+#### RSVPs Table
+
+- `id` (UUID, Primary Key)
+- `name` (TEXT) - Guest full name
+- `furigana` (TEXT) - Japanese phonetic reading
+- `allergies` (TEXT) - Food allergies/dietary restrictions
+- `attendance` (TEXT) - Status: 参加/不参加/保留
+- `message` (TEXT) - Congratulatory message
+- `created_at`, `updated_at` (TIMESTAMP)
+
+#### Companions Table
+
+- `id` (UUID, Primary Key)
+- `rsvp_id` (UUID, Foreign Key)
+- `name` (TEXT) - Companion full name
+- `furigana` (TEXT) - Japanese phonetic reading
+- `allergies` (TEXT) - Food allergies/dietary restrictions
+- `meal_option` (TEXT) - Meal preference options
+- `created_at`, `updated_at` (TIMESTAMP)
+
+### Supabase Commands
+
+```bash
+# Start local Supabase
+npx supabase start
+
+# Stop local Supabase
+npx supabase stop
+
+# Reset database with migrations
+npx supabase db reset
+
+# Generate TypeScript types
+npx supabase gen types typescript --local > src/lib/database.types.ts
+
+# Apply migrations to remote
+npx supabase db push
+
+# View logs
+npx supabase logs
+```
+
+### Production Setup
+
+1. Create a new project at [supabase.com](https://supabase.com)
+2. Get your project URL and anon key from the dashboard
+3. Update your production environment variables:
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+   ```
+4. Push your migrations:
+   ```bash
+   npx supabase link --project-ref your-project-ref
+   npx supabase db push
+   ```
+
+## Project Structure
+
+```
+wedding-site/
+├── src/
+│   ├── app/                 # Next.js App Router pages
+│   │   ├── api/            # API routes for RSVP handling
+│   │   ├── globals.css     # Global styles
+│   │   ├── layout.tsx      # Root layout
+│   │   └── page.tsx        # Home page
+│   ├── components/         # React components
+│   └── lib/               # Utility functions and Supabase client
+├── supabase/
+│   ├── config.toml        # Supabase local configuration
+│   ├── migrations/        # Database migration files
+│   └── seed.sql          # Seed data for development
+├── public/                # Static assets
+└── .env.local            # Environment variables
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build production application
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint for code quality checks
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+**Next.js Resources:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Supabase Resources:**
 
-## Deploy on Vercel
+- [Supabase Documentation](https://supabase.com/docs) - learn about Supabase features
+- [Supabase Local Development](https://supabase.com/docs/guides/local-development) - local setup guide
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel + Supabase (Recommended)
+
+1. Deploy to Vercel:
+
+   - Connect your GitHub repository to [Vercel](https://vercel.com)
+   - Set environment variables in Vercel dashboard
+   - Deploy automatically on git push
+
+2. Configure Supabase for production:
+   - Create production project on [supabase.com](https://supabase.com)
+   - Run migrations: `npx supabase db push`
+   - Update environment variables with production URLs
+
+### Environment Variables for Production
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+# Add all other NEXT_PUBLIC_ variables from .env.local
+```

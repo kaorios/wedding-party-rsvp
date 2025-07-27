@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Schedule from '../components/schedule';
-import RSVPModalComponent from '../components/rsvp-modal';
+import Schedule from '@/components/schedule';
+import RSVPModalComponent from '@/components/rsvp';
 
 export default function Home() {
   const weddingDetails = {
@@ -137,7 +137,11 @@ export default function Home() {
                   {weddingDetails.taxiNoticeTitle}
                 </span>
                 <br />
-                <span dangerouslySetInnerHTML={{ __html: weddingDetails.taxiNoticeText }} />
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: weddingDetails.taxiNoticeText,
+                  }}
+                />
               </p>
             </div>
             <div className="max-w-4xl mx-auto">
