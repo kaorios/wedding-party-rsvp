@@ -153,7 +153,7 @@ function RSVPModal({ isOpen, onClose }: RSVPModalProps) {
                   }
                   className="w-full p-3 border border-warm-coral rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral"
                 >
-                  <option value={0}>0名（お一人での参加）</option>
+                  <option value={0}>お一人での参加</option>
                   <option value={1}>1名</option>
                   <option value={2}>2名</option>
                   <option value={3}>3名</option>
@@ -281,14 +281,14 @@ function RSVPModal({ isOpen, onClose }: RSVPModalProps) {
                 onChange={(e) => updateFormData({ message: e.target.value })}
                 className="w-full p-3 border border-warm-coral rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral"
                 rows={3}
-                placeholder="お祝いのメッセージをお聞かせください"
+                placeholder="ご要望などがあればご記入ください"
               />
             </div>
 
             {/* Status Messages */}
             {submitStatus === 'success' && (
               <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                ✅ RSVP が正常に送信されました！ありがとうございます。
+                ✅ 正常に送信されました！ありがとうございます。
               </div>
             )}
 

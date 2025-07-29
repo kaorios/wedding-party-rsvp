@@ -62,3 +62,19 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Dynamic background color classes for environment variables */
+@layer utilities {
+  .bg-warm-yellow {
+    background-color: var(--color-warm-yellow);
+  }
+  .bg-warm-sage {
+    background-color: var(--color-warm-sage);
+  }
+  .bg-warm-coral {
+    background-color: var(--color-warm-coral);
+  }
+  .bg-soft-peach-dark {
+    background-color: var(--color-soft-peach-dark);
+  }
+}

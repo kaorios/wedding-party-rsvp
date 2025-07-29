@@ -160,7 +160,7 @@ export default function Home() {
               RSVP
             </h2>
           </div>
-          <p className="text-lg font-semibold text-center  mb-6">
+          <p className="text-lg text-center mb-6">
             お手数ではございますが
             <br />
             ご都合の程を{weddingDetails.rsvpDeadline}迄に
@@ -172,7 +172,10 @@ export default function Home() {
         <RSVPModalComponent />
 
         <div className="max-w-4xl mx-auto">
-          <p className="text-2xl font-script text-center text-warm-brown mt-10">
+          <p className="text-4xl font-script text-center text-warm-brown mt-10">
+            Thank you!
+          </p>
+          <p className="text-sm text-center text-warm-brown mt-6">
             We look forward to celebrating with you
           </p>
         </div>
