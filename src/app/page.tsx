@@ -172,7 +172,16 @@ export default function Home() {
         <RSVPModalComponent />
 
         <div className="max-w-4xl mx-auto">
-          <p className="text-4xl font-script text-center text-warm-brown mt-10">
+          <div className="flex justify-center mb-8 mt-10">
+            <Image
+              src="/couple.png"
+              alt="Couple Photo"
+              width={300}
+              height={200}
+              className="w-64 h-auto object-cover opacity-90"
+            />
+          </div>
+          <p className="text-4xl font-script text-center text-warm-brown">
             Thank you!
           </p>
           <p className="text-sm text-center text-warm-brown mt-6">
