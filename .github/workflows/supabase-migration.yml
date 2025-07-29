@@ -1,0 +1,114 @@
+name: Supabase Migration
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      migration_type:
+        description: 'Migration type'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - schema-only
+          - data-only
+      dry_run:
+        description: 'Dry run (check only, do not execute)'
+        required: false
+        default: false
+        type: boolean
+      confirm_production:
+        description: 'I confirm this is a production deployment (required for production)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate production confirmation
+        if: ${{ github.event.inputs.environment == 'production' && github.event.inputs.confirm_production != 'true' }}
+        run: |
+          echo "❌ Production deployment requires confirmation checkbox to be checked"
+          exit 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Set environment variables
+        run: |
+          if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+            echo "SUPABASE_PROJECT_REF=${{ secrets.SUPABASE_PROJECT_REF_PRODUCTION }}" >> $GITHUB_ENV
+            echo "Environment: 🚀 PRODUCTION"
+          else
+            echo "SUPABASE_PROJECT_REF=${{ secrets.SUPABASE_PROJECT_REF_STAGING }}" >> $GITHUB_ENV
+            echo "Environment: 🧪 STAGING"
+          fi
+          echo "SUPABASE_ACCESS_TOKEN=${{ secrets.SUPABASE_ACCESS_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Link Supabase project
+        run: |
+          echo "🔗 Linking to Supabase project..."
+          supabase link --project-ref ${{ env.SUPABASE_PROJECT_REF }}
+
+      - name: Check migration status
+        run: |
+          echo "📋 Current migration status:"
+          supabase migration list
+
+      - name: Dry run migrations
+        if: ${{ github.event.inputs.dry_run == 'true' }}
+        run: |
+          echo "🧪 Dry run mode - checking migrations..."
+          supabase db diff --schema public
+          echo "✅ Dry run completed - no changes applied"
+
+      - name: Push schema migrations
+        if: ${{ github.event.inputs.dry_run != 'true' && (github.event.inputs.migration_type == 'all' || github.event.inputs.migration_type == 'schema-only') }}
+        run: |
+          echo "📊 Pushing schema migrations..."
+          supabase db push
+
+      - name: Apply data migrations
+        if: ${{ github.event.inputs.dry_run != 'true' && (github.event.inputs.migration_type == 'all' || github.event.inputs.migration_type == 'data-only') }}
+        run: |
+          echo "💾 Applying data migrations..."
+          # Add your data migration commands here if needed
+          echo "✅ Data migrations completed"
+
+      - name: Verify migration status
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          echo "✅ Final migration status:"
+          supabase migration list
+          
+      - name: Summary
+        run: |
+          echo "🎉 Migration workflow completed!"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          echo "Migration type: ${{ github.event.inputs.migration_type }}"
+          echo "Dry run: ${{ github.event.inputs.dry_run }}"

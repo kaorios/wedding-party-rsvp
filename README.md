@@ -193,3 +193,55 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 # Add all other NEXT_PUBLIC_ variables from .env.local
 ```
+
+## GitHub Actions Migration Workflow
+
+This project includes a GitHub Actions workflow for manually triggering Supabase migrations to staging or production environments.
+
+### Setup GitHub Secrets
+
+To use the migration workflow, add the following secrets to your GitHub repository:
+
+1. Go to your GitHub repository
+2. Navigate to **Settings** → **Secrets and variables** → **Actions**
+3. Add the following repository secrets:
+
+| Secret Name | Description | Example |
+|-------------|-------------|---------|
+| `SUPABASE_ACCESS_TOKEN` | Your Supabase access token | `sbp_xxxxxxxxxxxxx` |
+| `SUPABASE_PROJECT_REF_STAGING` | Staging project reference | `your-staging-project-ref` |
+| `SUPABASE_PROJECT_REF_PRODUCTION` | Production project reference | `your-production-project-ref` |
+
+#### Getting Supabase Access Token
+
+1. Go to [Supabase Dashboard](https://supabase.com/dashboard)
+2. Navigate to **Account** → **Access Tokens**
+3. Create a new token with the necessary permissions
+4. Copy the token and add it as `SUPABASE_ACCESS_TOKEN` secret
+
+#### Getting Project References
+
+1. Go to your Supabase project dashboard
+2. Navigate to **Settings** → **General**
+3. Copy the **Reference ID** from the project settings
+4. Add as `SUPABASE_PROJECT_REF_STAGING` or `SUPABASE_PROJECT_REF_PRODUCTION`
+
+### Running Migrations
+
+1. Go to your GitHub repository
+2. Navigate to **Actions** tab
+3. Select **Supabase Migration** workflow
+4. Click **Run workflow**
+5. Choose your options:
+   - **Environment**: staging or production
+   - **Migration type**: all, schema-only, or data-only
+   - **Dry run**: Check only without executing
+   - **Confirm production**: Required checkbox for production deployments
+
+### Workflow Features
+
+- **Manual trigger**: Run migrations only when needed
+- **Environment selection**: Deploy to staging or production
+- **Safety checks**: Production deployments require explicit confirmation
+- **Dry run mode**: Preview changes without applying them
+- **Detailed logging**: View migration progress and results
