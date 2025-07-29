@@ -211,6 +211,8 @@ To use the migration workflow, add the following secrets to your GitHub reposito
 | `SUPABASE_ACCESS_TOKEN` | Your Supabase access token | `sbp_xxxxxxxxxxxxx` |
 | `SUPABASE_PROJECT_REF_STAGING` | Staging project reference | `your-staging-project-ref` |
 | `SUPABASE_PROJECT_REF_PRODUCTION` | Production project reference | `your-production-project-ref` |
+| `SUPABASE_DB_PASSWORD_STAGING` | Staging database password | `your-staging-db-password` |
+| `SUPABASE_DB_PASSWORD_PRODUCTION` | Production database password | `your-production-db-password` |
 
 #### Getting Supabase Access Token
 
@@ -223,8 +225,19 @@ To use the migration workflow, add the following secrets to your GitHub reposito
 
 1. Go to your Supabase project dashboard
 2. Navigate to **Settings** → **General**
-3. Copy the **Reference ID** from the project settings
+3. Copy the **Project ID** from the project settings (this is the project reference)
 4. Add as `SUPABASE_PROJECT_REF_STAGING` or `SUPABASE_PROJECT_REF_PRODUCTION`
+
+#### Getting Database Passwords
+
+1. Go to your Supabase project dashboard
+2. Navigate to **Settings** → **Database**
+3. In the **Connection string** section, you can:
+   - View the current password (if visible)
+   - Or click **Reset database password** to generate a new one
+4. Copy the password and add as `SUPABASE_DB_PASSWORD_STAGING` or `SUPABASE_DB_PASSWORD_PRODUCTION`
+
+**Note**: The database password is different from your Supabase account password. It's specifically for database connections.
 
 ### Running Migrations
 
