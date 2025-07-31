@@ -23,7 +23,6 @@ const mealOptions: Array<{ value: MealOption; label: string }> = [
     value: 'お子様用(3歳以上くらいから)',
     label: 'お子様用(3歳以上くらいから)',
   },
-  { value: 'ビュッフェのみ', label: 'ビュッフェのみ' },
   { value: '不要', label: '不要' },
 ];
 

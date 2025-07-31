@@ -85,7 +85,9 @@ export default function Home() {
                     日時
                   </h3>
                   <p className="text-xl">
-                    {weddingDetails.dateJp} {weddingDetails.time}
+                    {weddingDetails.dateJp}
+                    <br />
+                    {weddingDetails.time}
                   </p>
                 </div>
                 <div>

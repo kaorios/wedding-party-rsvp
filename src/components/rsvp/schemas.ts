@@ -8,7 +8,6 @@ export type AttendanceStatus = z.infer<typeof AttendanceStatusSchema>;
 export const MealOptionSchema = z.enum([
   "一般",
   "お子様用(3歳以上くらいから)",
-  "ビュッフェのみ",
   "不要",
 ]);
 export type MealOption = z.infer<typeof MealOptionSchema>;
@@ -86,12 +85,10 @@ export const MealOptionMapping = {
   // フロント → API
   regular: "一般" as const,
   child: "お子様用(3歳以上くらいから)" as const,
-  buffet_only: "ビュッフェのみ" as const,
   not_required: "不要" as const,
   // API → フロント
   "一般": "regular" as const,
   "お子様用(3歳以上くらいから)": "child" as const,
-  "ビュッフェのみ": "buffet_only" as const,
   "不要": "not_required" as const,
 } as const;
 
