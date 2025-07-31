@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-warm-cream to-soft-peach">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center text-center px-4 bg-warm-cream-light">
+      <section className="relative min-h-screen flex items-center justify-center text-center px-4 bg-warm-cream-light overflow-hidden">
         <div className="absolute inset-0 flex flex-col justify-between items-center">
           <div className="relative max-w-[1200px] w-full">
             <Image
