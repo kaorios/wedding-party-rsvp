@@ -2,10 +2,7 @@
 
 import { useState } from 'react';
 import { useRSVPForm } from './use-rsvp-form';
-import {
-  type AttendanceStatus,
-  type MealOption,
-} from '@/components/rsvp/schemas';
+import { type AttendanceStatus } from '@/components/rsvp/schemas';
 
 interface RSVPModalProps {
   isOpen: boolean;
@@ -15,15 +12,6 @@ interface RSVPModalProps {
 const attendanceOptions: Array<{ value: AttendanceStatus; label: string }> = [
   { value: '参加', label: '参加' },
   { value: '不参加', label: '不参加' },
-];
-
-const mealOptions: Array<{ value: MealOption; label: string }> = [
-  { value: '一般', label: '一般' },
-  {
-    value: 'お子様用(3歳以上くらいから)',
-    label: 'お子様用(3歳以上くらいから)',
-  },
-  { value: '不要', label: '不要' },
 ];
 
 function RSVPModal({ isOpen, onClose }: RSVPModalProps) {
@@ -239,31 +227,6 @@ function RSVPModal({ isOpen, onClose }: RSVPModalProps) {
                           rows={2}
                           placeholder="アレルギーがございましたらご記入ください"
                         />
-                      </div>
-
-                      <div>
-                        <label className="block text-warm-brown font-semibold mb-2">
-                          お料理について{' '}
-                          <span className="text-warm-coral">*</span>
-                        </label>
-                        <select
-                          value={companion.mealOption}
-                          onChange={(e) =>
-                            updateCompanion(
-                              companion.id,
-                              'mealOption',
-                              e.target.value
-                            )
-                          }
-                          className="w-full p-3 border border-warm-coral rounded-lg focus:outline-none focus:ring-2 focus:ring-warm-coral"
-                          required
-                        >
-                          {mealOptions.map(({ value, label }) => (
-                            <option key={value} value={value}>
-                              {label}
-                            </option>
-                          ))}
-                        </select>
                       </div>
                     </div>
                   ))}
