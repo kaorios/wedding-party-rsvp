@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Schedule from '@/components/schedule';
-import RSVPModalComponent from '@/components/rsvp';
 
 export default function Home() {
   const weddingDetails = {
@@ -156,23 +155,6 @@ export default function Home() {
       </section>
 
       <section className="py-20 px-4 bg-gradient-to-r from-soft-peach to-warm-cream">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-elegant font-extrabold text-foreground-heading tracking-wide mb-4 text-center">
-              RSVP
-            </h2>
-          </div>
-          <p className="text-lg text-center mb-6">
-            お手数ではございますが
-            <br />
-            ご都合の程を{weddingDetails.rsvpDeadline}迄に
-            <br />
-            ご一報賜りますようお願い申し上げます
-          </p>
-        </div>
-
-        <RSVPModalComponent />
-
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center mb-8 mt-10">
             <Image
