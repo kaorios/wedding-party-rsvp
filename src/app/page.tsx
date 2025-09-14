@@ -154,6 +154,76 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 px-4 bg-warm-peach-light">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-elegant font-extrabold text-foreground-heading tracking-wide mb-4 text-center">
+              FAQ
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-warm-cream p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground-heading mb-3">
+                Q. 授乳室などはありますか？
+              </h3>
+              <p className="text-foreground-body">
+                A.
+                披露宴会場と同じフロアにあります。簡易ベッドがございますので、授乳やおむつ替えなどにご利用ください。
+              </p>
+            </div>
+
+            <div className="bg-warm-cream p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground-heading mb-3">
+                Q. 着替えることができる場所はありますか？
+              </h3>
+              <p className="text-foreground-body">
+                A.はい、ございます。当日ご案内いたしますので、スタッフにお声がけください。
+              </p>
+            </div>
+
+            <div className="bg-warm-cream p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground-heading mb-3">
+                Q.荷物を預けることはできますか？
+              </h3>
+              <p className="text-foreground-body">
+                A.はい、クロークがございます。スタッフにお声がけください。
+              </p>
+            </div>
+
+            <div className="bg-warm-cream p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground-heading mb-3">
+                Q. 喫煙はできますか？
+              </h3>
+              <p className="text-foreground-body">
+                A.
+                挙式前は、待ち合い室のテラスを開放しております。披露宴中は、新郎新婦入場後に、ガーデンを開放しております。挙式と披露宴の間のお時間と、結び後は、完全禁煙となります。あいにく、別の場所でのご案内は難しくございますので、ご了承いただけますと幸いでございます。
+              </p>
+            </div>
+
+            <div className="bg-warm-cream p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground-heading mb-3">
+                Q. お子様ランチはありますか？
+              </h3>
+              <p className="text-foreground-body">
+                A. はい、ございます。事前にお知らせください。
+              </p>
+            </div>
+
+            <div className="bg-warm-cream p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground-heading mb-3">
+                Q. 子ども用の椅子はありますか？
+              </h3>
+              <p className="text-foreground-body">
+                A.
+                1-3歳用の椅子がございます。ご希望の方は事前にお知らせください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 px-4 bg-gradient-to-r from-soft-peach to-warm-cream">
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center mb-8 mt-10">
